@@ -1,0 +1,28 @@
+.button {
+  border: none;
+  color: white;
+  padding: var(--size-3) var(--size-5);
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: var(--font-size-2);
+  cursor: pointer;
+}
+.red {
+  background-color: var(--red-6);
+  &:hover {
+    background-color: var(--red-8);
+  }
+}
+.green {
+  background-color: var(--green-6);
+  &:hover {
+    background-color: var(--green-8);
+  }
+}
+.blue {
+  background-color: var(--blue-6);
+  &:hover {
+    background-color: var(--blue-8);
+  }
+}

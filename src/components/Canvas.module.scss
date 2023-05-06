@@ -1,0 +1,13 @@
+.canvasContainer {
+  outline: 1px solid black;
+  position: relative;
+  background-color: var(--gray-0);
+  grid-column: 1 / span 7;
+  .canvasButtons {
+    position: absolute;
+    display: flex;
+    gap: var(--size-1);
+    bottom: var(--size-1);
+    right: var(--size-1);
+  }
+}

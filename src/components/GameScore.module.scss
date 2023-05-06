@@ -1,0 +1,14 @@
+.score {
+  background-color: red;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  //   border: var(--border-size-1) solid var(--blue-6);
+}
+
+.correct {
+  background-color: var(--green-6);
+}
+.wrong {
+  background-color: var(--red-6);
+}

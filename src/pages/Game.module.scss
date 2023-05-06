@@ -1,0 +1,15 @@
+.game {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+
+  .word {
+    font-size: var(--font-size-8);
+    font-weight: var(--font-weight-9);
+    font-family: var(--font-mono);
+  }
+
+  .gameContainer {
+    display: flex;
+  }
+}

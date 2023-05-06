@@ -1,20 +1,22 @@
 import React, { useRef, useEffect, useState } from 'react';
-import styles from './Canvas.module.css';
+import styles from './Canvas.module.scss';
+import Tesseract from 'tesseract.js';
+import Button from './ui/Button';
+import GameInstructions from './GameInstructions';
 let canvas;
 let ctx;
-const Canvas = ({ setUrl }: any) => {
+const Canvas = ({ submitAnswer }: any) => {
   const [isDrawing, setisDrawing] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [instructions, setInstructions] = useState(true);
   const canvasRef = useRef(null);
 
   useEffect(() => {
     canvas = canvasRef.current;
     //@ts-ignore
     ctx = canvas.getContext('2d');
-    // ctx.lineWidth = 5;
-    // ctx.lineCap = 'round';
+    ctx.lineWidth = 10;
+    ctx.lineCap = 'round';
     // ctx.strokeStyle = 'red';
-    setLoaded(true);
   }, []);
 
   const handleMouseDown = (e) => {
@@ -37,20 +39,42 @@ const Canvas = ({ setUrl }: any) => {
   const clearCanvas = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
+  const readText = () => {
+    const url = canvas.toDataURL();
+    Tesseract.recognize(url, 'eng', {
+      logger: (m) => {
+        // console.log(m);
+        // if (m.status === 'recognizing text') {
+        //   setProgress(m.progress);
+        // }
+      },
+    }).then(({ data: { text } }) => {
+      console.log(text);
+      submitAnswer(text);
+      clearCanvas();
+    });
+  };
   return (
-    <>
+    <div className={styles.canvasContainer}>
       <canvas
-        height={500}
-        width={500}
+        height={600}
+        width={900}
         className={styles.canvas}
         ref={canvasRef}
         onMouseDown={(e) => handleMouseDown(e)}
         onMouseUp={(e) => handleMouseUp(e)}
         onMouseMove={(e) => handleMouseMove(e)}
       />
-      <button onClick={clearCanvas}>Clear</button>
-      <button onClick={() => setUrl(canvas.toDataURL())}>Get URL</button>
-    </>
+      <div className={styles.canvasButtons}>
+        <Button onClick={clearCanvas} colour='red'>
+          Clear
+        </Button>
+        <Button onClick={readText} colour='green'>
+          Submit
+        </Button>
+      </div>
+      {instructions && <GameInstructions setInstructions={setInstructions} />}
+    </div>
   );
 };
 

@@ -1,0 +1,24 @@
+.instructionsContainer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: hsl(var(--gray-0-hsl) / 80%);
+
+  .instructions {
+    width: 30%;
+    background-color: var(--gray-0);
+    border: var(--border-size-1) solid var(--blue-6);
+    padding: var(--size-3);
+
+    > h3 {
+      text-align: center;
+    }
+    > p {
+      text-align: justify;
+    }
+    > button {
+      margin: auto;
+    }
+  }
+}

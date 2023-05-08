@@ -1,8 +1,9 @@
 .canvasContainer {
-  outline: 1px solid black;
+  outline: 1px solid var(--primary-7);
   position: relative;
-  background-color: var(--gray-0);
+  background-color: var(--primary-10);
   grid-column: 1 / span 7;
+  // mix-blend-mode: difference;
   .canvasButtons {
     position: absolute;
     display: flex;

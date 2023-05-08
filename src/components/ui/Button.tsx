@@ -3,12 +3,17 @@ import styles from './Button.module.scss';
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  colour?: 'blue' | 'red' | 'green';
+  disabled?: boolean;
+  colour?: 'red' | 'green';
 }
 
-const Button = ({ children, onClick, colour = 'blue' }: ButtonProps) => {
+const Button = ({ children, onClick, colour, disabled }: ButtonProps) => {
   return (
-    <button className={`${styles.button} ${styles[colour]}`} onClick={onClick}>
+    <button
+      disabled={disabled}
+      className={`${styles.button} ${colour && styles[colour]}`}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

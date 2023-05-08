@@ -1,0 +1,37 @@
+.score {
+  background-color: var(--primary-10);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  outline: 1px solid var(--primary-7);
+  width: var(--size-12);
+  gap: var(--size-4);
+  padding: var(--size-1);
+
+  > h3 {
+    text-align: center;
+    margin: 0;
+  }
+
+  .count {
+    // position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    // bottom: var(--size-1);
+    // left: 50%;
+    // transform: translateX(-50%);
+  }
+}
+.result {
+  display: flex;
+  outline: 1px solid var(--primary-7);
+  background-color: var(--primary-10);
+  height: 100%;
+  align-items: center;
+}
+.correct {
+  background-color: var(--green-2);
+}
+.wrong {
+  background-color: var(--red-2);
+}

@@ -6,23 +6,37 @@
   text-decoration: none;
   display: block;
   font-size: var(--font-size-2);
+  background-color: var(--primary-8);
+  outline: 1px solid var(--primary-4);
+  &:hover {
+    background-color: var(--primary-7);
+    outline-width: 2px;
+  }
+  &:disabled {
+    background-color: var(--primary-10);
+    color: var(--primary-5);
+    outline-color: var(--primary-7);
+  }
+  &:focus {
+    outline-width: 2px;
+  }
   cursor: pointer;
 }
 .red {
-  background-color: var(--red-6);
+  background-color: var(--red-1);
   &:hover {
-    background-color: var(--red-8);
+    background-color: var(--red-2);
   }
 }
 .green {
-  background-color: var(--green-6);
+  background-color: var(--green-1);
   &:hover {
-    background-color: var(--green-8);
+    background-color: var(--green-2);
   }
 }
-.blue {
-  background-color: var(--blue-6);
-  &:hover {
-    background-color: var(--blue-8);
-  }
-}
+// .blue {
+//   background-color: var(--blue-6);
+//   &:hover {
+//     background-color: var(--blue-8);
+//   }
+// }

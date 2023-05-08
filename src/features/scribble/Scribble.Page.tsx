@@ -1,8 +1,9 @@
 import randomWords from 'random-words';
-import { useState } from 'react';
-import Canvas from '../components/Canvas';
-import styles from './Game.module.scss';
-import GameScore from '../components/GameScore';
+import { useMemo, useState } from 'react';
+import Canvas from './components/ScribbleCanvas';
+import styles from './Scribble.module.scss';
+import SctibbleScore from './components/ScribbleScore';
+import Modal from '../../components/ui/Modal';
 
 export interface Result {
   word: string;
@@ -23,14 +24,10 @@ const generateWord = () => {
   return word[0];
 };
 // const initialResults: Result[] = Array.from({ length: 10 });
-const Game = () => {
+const ScribblePage = () => {
   const [word, setWord] = useState(generateWord());
-  const [result, setResult] = useState<null | boolean>(null);
   const [results, setResults] = useState<Result[]>([]);
-  const getWord = () => {
-    const generatedWord = generateWord();
-    setWord(generatedWord);
-  };
+  const finished = useMemo(() => results.length === 10, [results]);
   const submitAnswer = (text: string) => {
     const trimmedString = formatString(text);
     let result: Result;
@@ -43,18 +40,31 @@ const Game = () => {
     setResults([...results, result]);
     setWord(generateWord());
   };
+  const resetGame = () => {
+    setWord(generateWord());
+    setResults([]);
+  };
   return (
     <main className={styles.game}>
       <span className={styles.word}>{word}</span>
-      {/* <button onClick={getWord}>Generate Word</button> */}
       <div className={styles.gameContainer}>
         <Canvas submitAnswer={submitAnswer} />
-        <GameScore results={results} />
+        <SctibbleScore results={results} />
       </div>
-      {result === true && <p>YOU ARE CORRECT</p>}
-      {result === false && <p>YOU ARE WRONG</p>}
+      {finished && <p>FINISHED</p>}
+      {finished && (
+        <Modal
+          title='GAME OVER'
+          description={`You scored: 10 out of 10`}
+          actionText='Play Again'
+          cancelText='Close'
+          triggerText='OPEN MODAL'
+          action={resetGame}
+          defaultOpen={true}
+        />
+      )}
     </main>
   );
 };
 
-export default Game;
+export default ScribblePage;

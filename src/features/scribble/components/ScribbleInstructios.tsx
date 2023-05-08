@@ -1,12 +1,12 @@
 import React from 'react';
-import styles from './GameInstructions.module.scss';
-import Button from './ui/Button';
+import styles from './ScribbleInstructions.module.scss';
+import Button from '../../../components/ui/Button';
 
 interface GameInstructionsProps {
   setInstructions: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const GameInstructions = ({ setInstructions }: GameInstructionsProps) => {
+const ScribbleInstructions = ({ setInstructions }: GameInstructionsProps) => {
   return (
     <div className={styles.instructionsContainer}>
       <div className={styles.instructions}>
@@ -22,4 +22,4 @@ const GameInstructions = ({ setInstructions }: GameInstructionsProps) => {
   );
 };
 
-export default GameInstructions;
+export default ScribbleInstructions;

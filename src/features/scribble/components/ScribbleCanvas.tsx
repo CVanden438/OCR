@@ -1,22 +1,22 @@
 import React, { useRef, useEffect, useState } from 'react';
-import styles from './Canvas.module.scss';
+import styles from './ScribbleCanvas.module.scss';
 import Tesseract from 'tesseract.js';
-import Button from './ui/Button';
-import GameInstructions from './GameInstructions';
+import Button from '../../../components/ui/Button';
+import GameInstructions from './ScribbleInstructios';
 let canvas;
 let ctx;
-const Canvas = ({ submitAnswer }: any) => {
+const ScribbleCanvas = ({ submitAnswer }: any) => {
   const [isDrawing, setisDrawing] = useState(false);
   const [instructions, setInstructions] = useState(true);
+  const [submitting, setSubmitting] = useState(false);
   const canvasRef = useRef(null);
-
   useEffect(() => {
     canvas = canvasRef.current;
     //@ts-ignore
     ctx = canvas.getContext('2d');
     ctx.lineWidth = 10;
     ctx.lineCap = 'round';
-    // ctx.strokeStyle = 'red';
+    ctx.strokeStyle = 'gray';
   }, []);
 
   const handleMouseDown = (e) => {
@@ -40,6 +40,7 @@ const Canvas = ({ submitAnswer }: any) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   };
   const readText = () => {
+    setSubmitting(true);
     const url = canvas.toDataURL();
     Tesseract.recognize(url, 'eng', {
       logger: (m) => {
@@ -52,6 +53,7 @@ const Canvas = ({ submitAnswer }: any) => {
       console.log(text);
       submitAnswer(text);
       clearCanvas();
+      setSubmitting(false);
     });
   };
   return (
@@ -66,10 +68,10 @@ const Canvas = ({ submitAnswer }: any) => {
         onMouseMove={(e) => handleMouseMove(e)}
       />
       <div className={styles.canvasButtons}>
-        <Button onClick={clearCanvas} colour='red'>
+        <Button disabled={submitting} onClick={clearCanvas}>
           Clear
         </Button>
-        <Button onClick={readText} colour='green'>
+        <Button disabled={submitting} onClick={readText}>
           Submit
         </Button>
       </div>
@@ -78,4 +80,4 @@ const Canvas = ({ submitAnswer }: any) => {
   );
 };
 
-export default Canvas;
+export default ScribbleCanvas;

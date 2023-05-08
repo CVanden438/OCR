@@ -1,5 +1,57 @@
 @import 'open-props/style';
 @import 'open-props/colors-hsl';
+
+:root {
+  --body-color: var(--gray-0);
+  --primary-0: var(--gray-0);
+  --primary-1: var(--gray-1);
+  --primary-2: var(--gray-2);
+  --primary-3: var(--gray-3);
+  --primary-4: var(--gray-4);
+  --primary-5: var(--gray-5);
+  --primary-6: var(--gray-6);
+  --primary-7: var(--gray-7);
+  --primary-8: var(--gray-8);
+  --primary-9: var(--gray-9);
+  --primary-10: var(--gray-10);
+  --primary-11: var(--gray-11);
+  --primary-12: var(--gray-12);
+
+  --green-0: var(--green-3);
+  --green-1: var(--green-6);
+  --green-2: var(--green-9);
+
+  --red-0: var(--red-3);
+  --red-1: var(--red-6);
+  --red-2: var(--red-9);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --body-color: var(--gray-12);
+    --text-color: var(--gray-0);
+    --primary-0: var(--gray-0);
+    --primary-1: var(--gray-1);
+    --primary-2: var(--gray-2);
+    --primary-3: var(--gray-3);
+    --primary-4: var(--gray-4);
+    --primary-5: var(--gray-5);
+    --primary-6: var(--gray-6);
+    --primary-7: var(--gray-7);
+    --primary-8: var(--gray-8);
+    --primary-9: var(--gray-9);
+    --primary-10: var(--gray-10);
+    --primary-11: var(--gray-11);
+    --primary-12: var(--gray-12);
+
+    --green-0: var(--green-3);
+    --green-1: var(--green-6);
+    --green-2: var(--green-9);
+
+    --red-0: var(--red-3);
+    --red-1: var(--red-6);
+    --red-2: var(--red-9);
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -7,5 +59,6 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: rgb(235, 235, 235);
+  background-color: var(--body-color);
+  color: var(--primary-0);
 }

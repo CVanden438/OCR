@@ -1,15 +1,18 @@
 .game {
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+  padding: var(--size-5);
 
   .word {
     font-size: var(--font-size-8);
     font-weight: var(--font-weight-9);
     font-family: var(--font-mono);
   }
-
   .gameContainer {
     display: flex;
+    gap: var(--size-5);
   }
 }

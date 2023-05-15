@@ -4,24 +4,15 @@ import { type Result } from '../Scribble.Page';
 
 interface GameScoreProps {
   results: Result[] | null;
+  score: number;
 }
 const defaultScores = Array.from({ length: 10 }, () => 0);
 
-const ScribbleScore = ({ results }: GameScoreProps) => {
-  const score = useMemo(
-    () =>
-      results?.reduce((acc, obj) => (obj.correct === true ? acc + 1 : acc), 0),
-    [results]
-  );
+const ScribbleScore = ({ results, score }: GameScoreProps) => {
   const renderedScores = useMemo(
-    () =>
-      results
-        ?.slice(0, 10)
-        //@ts-ignore
-        .concat(defaultScores.slice(results?.length)),
+    () => results?.slice(0, 10).concat(defaultScores.slice(results?.length)),
     [results]
   );
-  console.log(renderedScores);
   return (
     <div className={styles.score}>
       <h3>Results</h3>

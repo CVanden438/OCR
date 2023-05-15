@@ -3,45 +3,58 @@ import styles from './ScribbleCanvas.module.scss';
 import Tesseract from 'tesseract.js';
 import Button from '../../../components/ui/Button';
 import GameInstructions from './ScribbleInstructios';
-let canvas;
-let ctx;
-const ScribbleCanvas = ({ submitAnswer }: any) => {
+let canvas: HTMLCanvasElement | null;
+let ctx: CanvasRenderingContext2D | null;
+
+interface ScribbleCanvasProps {
+  submitAnswer: (text: string) => void;
+}
+const ScribbleCanvas = ({ submitAnswer }: ScribbleCanvasProps) => {
   const [isDrawing, setisDrawing] = useState(false);
   const [instructions, setInstructions] = useState(true);
   const [submitting, setSubmitting] = useState(false);
-  const canvasRef = useRef(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     canvas = canvasRef.current;
-    //@ts-ignore
-    ctx = canvas.getContext('2d');
-    ctx.lineWidth = 10;
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = 'gray';
+    if (canvas) {
+      ctx = canvas.getContext('2d');
+    }
+    if (ctx) {
+      ctx.lineWidth = 10;
+      ctx.lineCap = 'round';
+      ctx.strokeStyle = 'gray';
+    }
   }, []);
 
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (
+    e: React.MouseEvent<HTMLCanvasElement, MouseEvent>
+  ) => {
     setisDrawing(true);
-    ctx.beginPath();
-    ctx.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    ctx?.beginPath();
+    ctx?.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
   };
 
-  const handleMouseUp = (e) => {
+  const handleMouseUp = () => {
     setisDrawing(false);
   };
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLCanvasElement, MouseEvent>
+  ) => {
     if (isDrawing) {
-      ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-      ctx.stroke();
+      ctx?.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+      ctx?.stroke();
     }
   };
 
   const clearCanvas = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (canvas && ctx) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
   };
   const readText = () => {
     setSubmitting(true);
-    const url = canvas.toDataURL();
+    const url = canvas?.toDataURL();
     Tesseract.recognize(url, 'eng', {
       logger: (m) => {
         // console.log(m);
@@ -64,7 +77,7 @@ const ScribbleCanvas = ({ submitAnswer }: any) => {
         className={styles.canvas}
         ref={canvasRef}
         onMouseDown={(e) => handleMouseDown(e)}
-        onMouseUp={(e) => handleMouseUp(e)}
+        onMouseUp={() => handleMouseUp()}
         onMouseMove={(e) => handleMouseMove(e)}
       />
       <div className={styles.canvasButtons}>

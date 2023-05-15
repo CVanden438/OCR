@@ -6,11 +6,14 @@ interface GameScoreProps {
   results: Result[] | null;
   score: number;
 }
-const defaultScores = Array.from({ length: 10 }, () => 0);
+const defaultScores = Array.from({ length: 10 }, () => ({
+  word: '',
+  correct: null,
+}));
 
 const ScribbleScore = ({ results, score }: GameScoreProps) => {
   const renderedScores = useMemo(
-    () => results?.slice(0, 10).concat(defaultScores.slice(results?.length)),
+    () => results?.concat(defaultScores.slice(results?.length)),
     [results]
   );
   return (

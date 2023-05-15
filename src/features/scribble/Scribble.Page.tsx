@@ -8,7 +8,7 @@ import Button from '../../components/ui/Button';
 
 export interface Result {
   word: string;
-  correct: boolean;
+  correct: boolean | null;
 }
 
 const formatString = (string: string) => {

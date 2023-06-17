@@ -51,24 +51,31 @@ const ScribblePage = () => {
     setResults([]);
   };
   return (
-    <main className={styles.game}>
-      <span className={styles.word}>{word}</span>
-      <div className={styles.gameContainer}>
-        <Canvas submitAnswer={submitAnswer} />
-        <SctibbleScore results={results} score={score} />
-      </div>
-      {finished && <Button onClick={resetGame}>Reset Game</Button>}
-      {finished && (
-        <Modal
-          title='GAME OVER'
-          description={`You scored: ${score} out of 10`}
-          actionText='Play Again'
-          cancelText='Close'
-          triggerText='OPEN MODAL'
-          action={resetGame}
-          defaultOpen={true}
-        />
-      )}
+    <main className={styles.gamePageLayout}>
+      <h2>SCRIBBLE</h2>
+      <section className={styles.game}>
+        <span className={styles.word}>{word}</span>
+        <div className={styles.gameContainer}>
+          <Canvas submitAnswer={submitAnswer} />
+          <SctibbleScore results={results} score={score} />
+        </div>
+        {finished && <Button onClick={resetGame}>Reset Game</Button>}
+        {finished && (
+          <Modal
+            title='GAME OVER'
+            description={`You scored: ${score} out of 10`}
+            actionText='Play Again'
+            cancelText='Close'
+            triggerText='OPEN MODAL'
+            action={resetGame}
+            defaultOpen={true}
+          />
+        )}
+      </section>
+      <section className={styles.chatroom}>Chatroom</section>
+      <section className={styles.details}>Details</section>
+      <section className={styles.comments}>Comments/Reviews</section>
+      <section className={styles.related}>Related Games</section>
     </main>
   );
 };

@@ -6,6 +6,10 @@ import GameInstructions from './ScribbleInstructios';
 let canvas: HTMLCanvasElement | null;
 let ctx: CanvasRenderingContext2D | null;
 
+// if (window.matchMedia('(prefers-color-scheme: dark)')) {
+//   element.classList.add('dark');
+// } else {
+// }
 interface ScribbleCanvasProps {
   submitAnswer: (text: string) => void;
 }

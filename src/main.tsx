@@ -9,19 +9,18 @@ import {
   Link,
 } from 'react-router-dom';
 import ScribblePage from './features/scribble/Scribble.Page.tsx';
+import Root from './components/layout/Root.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: (
-      <div>
-        <h1>Hello World</h1>
-      </div>
-    ),
-  },
-  {
-    path: 'scribble',
-    element: <ScribblePage />,
+    element: <Root />,
+    children: [
+      {
+        path: 'scribble',
+        element: <ScribblePage />,
+      },
+    ],
   },
 ]);
 

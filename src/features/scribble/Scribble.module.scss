@@ -20,6 +20,11 @@
   }
 }
 
+.gameChatWrapper {
+  display: flex;
+  gap: var(--size-2);
+}
+
 .game,
 .chatroom,
 .details,

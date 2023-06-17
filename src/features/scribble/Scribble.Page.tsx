@@ -6,12 +6,16 @@ import SctibbleScore from './components/game/ScribbleScore';
 import Modal from '../../components/ui/Modal';
 import Button from '../../components/ui/Button';
 import GameContainer from './components/game/GameContainer';
+import ChatroomContainer from './components/chatroom/ChatroomContainer';
 
 const ScribblePage = () => {
   return (
     <div className={styles.gamePageLayout}>
       <h2>SCRIBBLE</h2>
-      <GameContainer />
+      <div className={styles.gameChatWrapper}>
+        <GameContainer />
+        <ChatroomContainer />
+      </div>
       <section className={styles.chatroom}>Chatroom</section>
       <section className={styles.details}>Details</section>
       <section className={styles.comments}>Comments/Reviews</section>

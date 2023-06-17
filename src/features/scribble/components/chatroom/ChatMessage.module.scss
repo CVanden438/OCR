@@ -1,0 +1,11 @@
+.chatMessage {
+  //   border: 2px solid blue;
+}
+
+.nameDateWrapper {
+  display: flex;
+  justify-content: space-between;
+  > h4 {
+    margin: 0;
+  }
+}

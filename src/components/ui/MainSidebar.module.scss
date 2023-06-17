@@ -1,8 +1,8 @@
 .mainSidebar {
-  position: fixed;
+  position: sticky;
   height: 100vh;
   background-color: green;
-  width: 200px;
-  //   padding-top: var(--size-10);
-  top: var(--size-10);
+  width: var(--size-12);
+  left: 0;
+  top: var(--size-8);
 }

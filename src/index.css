@@ -119,4 +119,5 @@ body {
   margin: 0;
   background-color: var(--body-color);
   color: var(--primary-0);
+  font-family: var(--font-sans);
 }

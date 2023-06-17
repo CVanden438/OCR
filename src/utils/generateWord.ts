@@ -1,12 +1,11 @@
 import randomWords from 'random-words';
 
-const generateWord = ({
-  amount = 1,
-  maxLength = 5,
-}: {
+interface GenerateWord {
   amount?: number;
   maxLength?: number;
-}) => {
+}
+
+const generateWord = ({ amount = 1, maxLength = 5 }: GenerateWord) => {
   const word = randomWords({
     exactly: amount,
     maxLength: maxLength,

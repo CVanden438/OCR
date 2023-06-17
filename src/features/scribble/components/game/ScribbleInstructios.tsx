@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ScribbleInstructions.module.scss';
-import Button from '../../../components/ui/Button';
+import Button from '../../../../components/ui/Button';
 
 interface GameInstructionsProps {
   setInstructions: React.Dispatch<React.SetStateAction<boolean>>;

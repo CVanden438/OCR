@@ -1,7 +1,9 @@
 .mainHeader {
-  position: fixed;
-  width: 100vw;
-  height: var(--size-10);
+  position: sticky;
+  height: var(--size-8);
   background-color: red;
   z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
 }

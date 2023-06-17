@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styles from './ScribbleCanvas.module.scss';
 import Tesseract from 'tesseract.js';
-import Button from '../../../components/ui/Button';
+import Button from '../../../../components/ui/Button';
 import GameInstructions from './ScribbleInstructios';
 let canvas: HTMLCanvasElement | null;
 let ctx: CanvasRenderingContext2D | null;
@@ -12,8 +12,14 @@ let ctx: CanvasRenderingContext2D | null;
 // }
 interface ScribbleCanvasProps {
   submitAnswer: (text: string) => void;
+  finished: boolean;
+  resetGame: () => void;
 }
-const ScribbleCanvas = ({ submitAnswer }: ScribbleCanvasProps) => {
+const ScribbleCanvas = ({
+  submitAnswer,
+  finished,
+  resetGame,
+}: ScribbleCanvasProps) => {
   const [isDrawing, setisDrawing] = useState(false);
   const [instructions, setInstructions] = useState(true);
   const [submitting, setSubmitting] = useState(false);
@@ -91,6 +97,7 @@ const ScribbleCanvas = ({ submitAnswer }: ScribbleCanvasProps) => {
         <Button disabled={submitting} onClick={readText}>
           Submit
         </Button>
+        {finished && <Button onClick={resetGame}>Reset Game</Button>}
       </div>
       {instructions && <GameInstructions setInstructions={setInstructions} />}
     </div>

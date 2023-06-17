@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import styles from './ScribbleScore.module.scss';
-import { type Result } from '../Scribble.Page';
+import { type Result } from './GameContainer';
 
 interface GameScoreProps {
   results: Result[] | null;

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styles from './ScribbleCanvas.module.scss';
 import Tesseract from 'tesseract.js';
-import Button from '../../../../components/ui/Button';
+import Button from '../../../components/ui/Button';
 import GameInstructions from './ScribbleInstructios';
 let canvas: HTMLCanvasElement | null;
 let ctx: CanvasRenderingContext2D | null;

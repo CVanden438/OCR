@@ -1,12 +1,12 @@
 import React, { useMemo, useState } from 'react';
-import generateWord from '../../../../utils/generateWord';
-import formatString from '../../../../utils/formatString';
+import generateWord from '../../../utils/generateWord';
+import formatString from '../../../utils/formatString';
 import styles from './GameContainer.module.scss';
 import ScribbleCanvas from './ScribbleCanvas';
 import ScribbleInstructions from './ScribbleInstructios';
 import ScribbleScore from './ScribbleScore';
-import Button from '../../../../components/ui/Button';
-import Modal from '../../../../components/ui/Modal';
+import Button from '../../../components/ui/Button';
+import Modal from '../../../components/ui/Modal';
 
 export interface Result {
   word: string;

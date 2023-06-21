@@ -9,7 +9,7 @@ import {
   Link,
 } from 'react-router-dom';
 import Root from './components/layout/Root.tsx';
-import GamePage from './pages/GamePage.tsx';
+import GamePage from './routes/GamePage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       {
-        path: 'scribble',
+        path: '/games/:gameName',
         element: <GamePage />,
       },
     ],

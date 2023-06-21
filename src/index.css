@@ -121,3 +121,12 @@ body {
   color: var(--primary-0);
   font-family: var(--font-sans);
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}

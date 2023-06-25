@@ -10,11 +10,13 @@ import {
 } from 'react-router-dom';
 import Root from './components/layout/Root.tsx';
 import GamePage from './routes/GamePage.tsx';
+import ErrorPage from './routes/ErrorPage.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/games/:gameName',

@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import generateWord from '../../../utils/generateWord';
 import formatString from '../../../utils/formatString';
-import styles from './GameContainer.module.scss';
+import styles from './ScribbleGameContainer.module.scss';
 import ScribbleCanvas from './ScribbleCanvas';
 import ScribbleInstructions from './ScribbleInstructios';
 import ScribbleScore from './ScribbleScore';
@@ -13,7 +13,7 @@ export interface Result {
   correct: boolean | null;
 }
 
-const GameContainer = () => {
+const ScribbleGameContainer = () => {
   const [word, setWord] = useState(generateWord({}));
   const [results, setResults] = useState<Result[]>([]);
   const finished = useMemo(() => results.length === 10, [results]);
@@ -62,4 +62,4 @@ const GameContainer = () => {
   );
 };
 
-export default GameContainer;
+export default ScribbleGameContainer;
